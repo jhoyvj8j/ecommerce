@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age calculateAge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Age Rahul</h2>
+        <input type="date" id="dob">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            var dob = document.getElementById('dob').value;
+            var dobDate = new Date(dob);
+            
+            var today = new Date();
+            var age = today.getFullYear() - dobDate.getFullYear();
+            var monthDiff = today.getMonth() - dobDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById('result').innerText = "Your age is: " + age;
+        }
+    </script>
+</body>
+</html>
